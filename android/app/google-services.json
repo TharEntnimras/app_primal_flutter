@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "547312214240",
+    "project_id": "platzitripsp",
+    "storage_bucket": "platzitripsp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547312214240:android:7b4287cba4a0b96e897085",
+        "android_client_info": {
+          "package_name": "com.example.practica_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547312214240-sseeafq8k5f5sfhc776t1lsodiob366l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.practica_1",
+            "certificate_hash": "d33c9660cd90d9f96becce60aa456d41a5d2d5d1"
+          }
+        },
+        {
+          "client_id": "547312214240-f2rfsv2s2a0tfqse56p4u7tbtu3lndn6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5_sY4cGs7ZCK5o8xSgAKP7FM5TIMjukU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547312214240-f2rfsv2s2a0tfqse56p4u7tbtu3lndn6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
