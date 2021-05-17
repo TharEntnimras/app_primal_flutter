@@ -1,37 +1,37 @@
 import 'package:flutter/material.dart';
 
-
-class ButtonPurple extends StatelessWidget {
-
-  final String buttonText;
+class ButtonGreen extends StatefulWidget {
+ 
+  final String text;
+  double width = 0.0;
+  double height = 0.0;
   final VoidCallback onPressed; 
 
-  ButtonPurple({
-    Key key,
-    @required this.buttonText,
-    @required this.onPressed
-
-  });
+  ButtonGreen({Key key, @required this.text, @required this.onPressed, this.height, this.width});
 
   @override
+   State createState() =>  _ButtonGreenState();
+}
+
+class  _ButtonGreenState extends State <ButtonGreen> {
+  @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return InkWell(
-      onTap: onPressed,
+      onTap: widget.onPressed,
       child: Container(
         margin: EdgeInsets.only(
             top: 30.0,
             left: 20.0,
-            right: 20.0
+            right: 20.0,
         ),
-        height: 50.0,
-        width: 180.0,
-        decoration: BoxDecoration(
+         height: widget.height,
+         width: widget.width,
+            decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(30.0),
-            gradient: LinearGradient(
+            gradient: LinearGradient( 
               colors: [
-                Color(0xFF4268D3),
-                Color(0xFF584CD1)
+                Color(0xFFa7ff84),//arriba
+                Color(0xFF1cbb78)//abajo
               ],
               begin: FractionalOffset(0.2, 0.0),
               end: FractionalOffset(1.0, 0.6),
@@ -41,21 +41,20 @@ class ButtonPurple extends StatelessWidget {
             )
 
         ),
-
         child: Center(
           child: Text(
-            buttonText,
+            widget.text,
             style: TextStyle(
               fontSize: 18.0,
               fontFamily: "Lato",
               color: Colors.white
             ),
 
-          ), 
+          ),
         ),
-
       ),
+     
+
     );
   }
-
 }

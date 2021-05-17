@@ -27,18 +27,18 @@ class ProfilePlaceInfo extends StatelessWidget {
         ),
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
+            children: <Widget>[ /*
               Text(
-                this.place.where,
+                this.place.name,
                 style: TextStyle(
                     color: Color.fromRGBO(0, 0, 0, 0.4),
                     fontFamily: 'Lato',
                     fontSize: 12.0,
                     fontWeight: FontWeight.bold
                 ),
-              ),
+              ),*/
               Text(
-                this.place.type,
+                this.place.description,
                 style: TextStyle(
                     color: Color.fromRGBO(0, 0, 0, 0.4),
                     fontFamily: 'Lato',
@@ -50,8 +50,8 @@ class ProfilePlaceInfo extends StatelessWidget {
         )
     );
 
-    final steps = Text(
-      'Steps ${this.place.steps}',
+    final likes = Text(
+      'Me Enkokora   ${this.place.likes}',
       style: TextStyle(
           fontFamily: 'Lato',
           fontSize: 14.0,
@@ -80,7 +80,7 @@ class ProfilePlaceInfo extends StatelessWidget {
             children: <Widget>[
               place,
               placeInfo,
-              steps
+              likes
             ],
           )
       ),
@@ -90,7 +90,7 @@ class ProfilePlaceInfo extends StatelessWidget {
       alignment: Alignment(0.8, 1.25),
       children: <Widget>[
         card,
-        FloatingActionButtonGreen()
+        FloatingActionButtonGreen(iconData: Icons.favorite, onPressed:(){},)
       ],
     );
   }

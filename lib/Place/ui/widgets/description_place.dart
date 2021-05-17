@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:generic_bloc_provider/generic_bloc_provider.dart';
+import 'package:practica_1/Place/model/place.dart';
+import 'package:practica_1/User/bloc/bloc_user.dart';
 import 'package:practica_1/widgets/button_purple.dart';
 
 class DescriptionPlace extends StatelessWidget {
@@ -13,8 +16,10 @@ class DescriptionPlace extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
 
+    UserBloc userBloc = BlocProvider.of(context);
+    // TODO: implement build
+   /*
     final star_half = Container (
       margin: EdgeInsets.only(
           top: 353.0,
@@ -51,40 +56,7 @@ class DescriptionPlace extends StatelessWidget {
       ),
     );
 
-    final title_stars = Row (
-      children: <Widget>[
-        Container (
-          margin: EdgeInsets.only(
-            top: 350.0,
-            left: 20.0,
-            right: 20.0
-          ),
 
-          child: Text(
-            namePlace,
-            style: TextStyle(
-              fontFamily: "Lato",
-              fontSize: 30.0,
-              fontWeight: FontWeight.w900
-            ),
-            textAlign: TextAlign.left,
-          ),
-
-        ),
-
-        Row(
-          children: <Widget>[
-            star,
-            star,
-            star,
-            star,
-            star_half
-          ],
-        )
-
-
-      ],
-    );
 
     final description = Container(
       margin: new EdgeInsets.only(
@@ -103,18 +75,131 @@ class DescriptionPlace extends StatelessWidget {
         ),
 
       ),
-    );
+    );*/
 
-    return Column(
+    return StreamBuilder(
+      stream: userBloc.placeSelectedStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot){
+      if(snapshot.hasData){
+        print("LUGAR SELECCIONADO: ${snapshot.data.name}");
+        Place place = snapshot.data;
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            titleStars(place),
+            descriptionWidget(place.description),
+            ButtonPurple(buttonText: "Navegar", onPressed: (){})
+            
+          ],
+        );
+      }else{
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin: EdgeInsets.only(
+                top: 400.0,
+                left: 20.0,
+                //right: 20.0
+              ),
+              child: Text(
+                "Selecciona un lugar",
+                style: TextStyle(
+                  fontFamily: "Lato",
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.w900
+                ),
+                textAlign: TextAlign.left,
+              ),
+            )
+          ],
+
+        );
+      }
+      
+          
+      });
+    
+    
+    
+    /*Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        title_stars,
+        titlestars(place),
         description,
-        ButtonPurple("Navigate")
+        ButtonPurple(buttonText: "Navigate", onPressed: (){},)
+      ],
+    );*/
+
+
+  }
+
+  Widget titleStars(Place place){
+     return  Column(
+       crossAxisAlignment: CrossAxisAlignment.start,
+       
+      children: <Widget>[
+        Container (
+          margin: EdgeInsets.only(
+            top: 350.0,
+            left: 20.0,
+            //right: 20.0
+          ),
+          
+          child: Text(
+            place.name,
+            style: TextStyle(
+              fontFamily: "Lato",
+              fontSize: 30.0,
+              fontWeight: FontWeight.w900
+            ),
+            //textAlign: TextAlign.left,
+          ),
+
+        ),
+
+       Container(
+          
+         margin: EdgeInsets.only(
+           top: 20.0,
+           left: 20.0,
+           //right: 20.0
+         ),
+         child: Text(
+           "Me Enkokora: ${place.likes}",
+           style: TextStyle(
+             fontFamily: "Lato",
+             fontSize: 18.0,
+             fontWeight: FontWeight.w900,
+             color: Colors.amber
+           ),
+           textAlign: TextAlign.start,
+         ),
+       )
+
+
       ],
     );
+  }
 
-
+  Widget descriptionWidget(String descriptionPlace){
+    return Container(
+      margin: new EdgeInsets.only(
+        top: 20.0,
+        left: 20.0,
+        right: 20.0
+      ),
+      child: new Text(
+        descriptionPlace,
+        style: const TextStyle(
+          fontFamily: "Lato",
+          fontSize: 16.0,
+          fontWeight: FontWeight.bold,
+          color: Color(0xff56575a)
+        ),
+        textAlign: TextAlign.left,
+      ),
+    );
   }
 
 }

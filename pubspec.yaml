@@ -33,6 +33,9 @@ dependencies:
   google_sign_in: 
   firebase_storage: ^8.0.1
   cloud_firestore: ^1.0.2
+  firebase_core : ^1.0.1
+  image_picker: ^0.7.4
+  cached_network_image: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -89,6 +92,7 @@ flutter:
     - assets/img/mountain_stars.jpeg
     - assets/img/sunset.jpeg
     - assets/img/river.jpeg
+    - assets/img/corona.png
   fonts: 
     - family: Lato
       fonts: 
